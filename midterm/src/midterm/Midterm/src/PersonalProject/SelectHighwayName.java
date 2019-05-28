@@ -1,6 +1,9 @@
 package midterm.Midterm.src.PersonalProject;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +13,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.sql.DataSource;
+
+import org.apache.jasper.tagplugins.jstl.core.ForEach;
 
 @WebServlet("/SelectHighwayName.do")
 public class SelectHighwayName extends HttpServlet {
@@ -18,19 +24,16 @@ public class SelectHighwayName extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-//		String highway = request.getParameter("nhighwayname");
 		HighwayDAO dao = new HighwayDAO();
-		List<String> nums = new ArrayList<>();
-		 
-		String str = "<select name='highwayName' id='name='highwayName' style='font-size: 20px'>";
+		List<String> nums = new ArrayList<String>();
+		String str = "<select name='highwayName' id='highwayName'>";
 		try {
 			nums = dao.findAllHighwayName();
 			for (String highwayBean : nums) {
-//				str2 = highwayBean.getHighwayName();
 				str += "<option value='" + highwayBean + "'>" + highwayBean + "</option>";
 			}
 			str += "</select>";
-		}catch (SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		response.setCharacterEncoding("UTF-8");

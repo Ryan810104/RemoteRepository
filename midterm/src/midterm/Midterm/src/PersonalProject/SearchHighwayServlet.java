@@ -48,7 +48,7 @@ public class SearchHighwayServlet extends HttpServlet {
 			if(bean.size()==0) {
 				session.setAttribute("SearchHighway", "查無此資料");
 			}else{
-			str = "<table border='3'><tr><th width='200px'>國道名</th><th width='200px'>方向</th><th width='200px'>編號</th><th width='200px'>代碼</th><th width='200px'>起點交流道</th><th width='200px'>迄點交流道</th><th width='200px'>收費區設定里程</th><th width='200px'>小型車牌價</th><th width='200px'>大型車牌價</th><th width='200px'>聯結車牌價</th></tr>";
+			str = "<table border='3'><tr><th width='200px'>國道名</th><th width='200px'>方向</th><th width='200px'>編號</th><th width='200px'>代碼</th><th width='200px'>起點交流道</th><th width='200px'>迄點交流道</th><th width='100px'>收費區設定里程</th><th width='100px'>小型車牌價</th><th width='100px'>大型車牌價</th><th width='100px'>聯結車牌價</th></tr>";
 			for (HighwayBean highway : bean) {
 				str += "<tr><td>" + highway.getHighwayName() + "</td><td>" + highway.getDirect() + "</td><td>"
 						+ highway.getNumber() + "</td><td>" + highway.getCode() + "</td><td>" + highway.getStartPoint()

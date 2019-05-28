@@ -41,7 +41,7 @@ public class UpdateHighwayServlet extends HttpServlet {
 		if (number == null || number.trim().length() == 0) {
 			errorMessage.put("number", "請輸入編號");
 		}
-		String code = request.getParameter("ncode");
+		String code = request.getParameter("code");
 		if (code == null || code.trim().length() == 0) {
 			errorMessage.put("code", "請輸入代碼");
 		}
@@ -109,6 +109,7 @@ public class UpdateHighwayServlet extends HttpServlet {
 		bean.setChargeTruck(fchargetruck);
 		HighwayDAO dao = new HighwayDAO();
 		try {
+			
 			dao.update(bean);
 			session.setAttribute("update", bean);
 			response.sendRedirect("UpdateResult.jsp");
